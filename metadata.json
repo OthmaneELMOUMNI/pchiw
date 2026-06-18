@@ -1,0 +1,6 @@
+{
+  "name": "Oussama Pchiw - Elite Personal Trainer",
+  "description": "Elite personal training, Street Workout, Calisthenics, and Boxing coaching by Oussama Pchiw. Master your body and control your mind.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
