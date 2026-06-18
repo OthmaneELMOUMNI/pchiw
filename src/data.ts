@@ -164,8 +164,7 @@ export const TESTIMONIALS: Testimonial[] = [
     skillsUnlocked: ["Human Flag", "Clapping Pull-up", "Ring Muscle-up"],
     duration: "16 Weeks",
     imageSeed: "karim",
-    avatarUrl: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=400",
-    transformationUrl: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&q=80&w=800"
+    transformationUrl: "/src/assets/images/transformation_karim.png"
   },
   {
     id: "testimonial-2",
@@ -178,8 +177,7 @@ export const TESTIMONIALS: Testimonial[] = [
     skillsUnlocked: ["Handstand Press", "Ring Muscle-up", "3-Min Bag Blast"],
     duration: "12 Weeks",
     imageSeed: "yassine",
-    avatarUrl: "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&q=80&w=400",
-    transformationUrl: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&q=80&w=800"
+    transformationUrl: "/src/assets/images/transformation_yassine.png"
   },
   {
     id: "testimonial-3",
@@ -192,8 +190,7 @@ export const TESTIMONIALS: Testimonial[] = [
     skillsUnlocked: ["Strict Chest-to-Bar", "3-Punch KO Combo", "L-Sit Hold"],
     duration: "8 Weeks",
     imageSeed: "sofiane",
-    avatarUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400",
-    transformationUrl: "https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?auto=format&fit=crop&q=80&w=800"
+    transformationUrl: "/src/assets/images/transformation_sofiane.png"
   }
 ];
 

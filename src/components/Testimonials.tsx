@@ -31,7 +31,7 @@ export default function Testimonials() {
           </h2>
           <div className="w-16 h-1 bg-[#CCFF00] mt-4 mb-5 rounded-full" />
           <p className="font-sans text-neutral-400 text-sm sm:text-base leading-relaxed">
-            Real people. Real biomechanical evolutions. These clients dedicated their effort to Oussama's strict bodyweight and boxing regimens—unshackling elite capabilities.
+            Moroccan client-style progress snapshots showing the kind of body recomposition Oussama's strict bodyweight and boxing regimens are built to produce.
           </p>
         </div>
 
