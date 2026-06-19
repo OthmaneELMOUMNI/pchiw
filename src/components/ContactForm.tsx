@@ -7,6 +7,8 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Mail, User, Phone, CheckCircle2, ChevronRight, Activity, ArrowRight, ShieldCheck, Sparkles, Send } from "lucide-react";
 import { ContactFormInputs } from "../types";
+import { CONTACT_PHONE_DISPLAY, WHATSAPP_URL } from "../contact";
+import WhatsAppIcon from "./WhatsAppIcon";
 
 export default function ContactForm() {
   const [formValues, setFormValues] = useState<ContactFormInputs>({
@@ -124,6 +126,28 @@ export default function ContactForm() {
                   </p>
                 </div>
               </div>
+
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center justify-between gap-4 rounded-3xl border border-[#25D366]/20 bg-[#25D366]/5 px-4 py-3 text-left transition-colors hover:bg-[#25D366]/10"
+              >
+                <span className="flex items-center gap-3 min-w-0">
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#25D366] text-black">
+                    <WhatsAppIcon className="w-4 h-4" />
+                  </span>
+                  <span className="min-w-0">
+                    <span className="block font-sans text-xs font-extrabold uppercase tracking-wider text-white">
+                      WhatsApp Direct
+                    </span>
+                    <span className="block font-mono text-[11px] font-bold text-[#25D366]">
+                      {CONTACT_PHONE_DISPLAY}
+                    </span>
+                  </span>
+                </span>
+                <ArrowRight className="h-4 w-4 shrink-0 text-[#25D366]" />
+              </a>
             </div>
           </div>
 
@@ -251,7 +275,7 @@ export default function ContactForm() {
                           name="phone"
                           value={formValues.phone}
                           onChange={handleInputChange}
-                          placeholder="+1 (555) 019-2834"
+                          placeholder={CONTACT_PHONE_DISPLAY}
                           className="bg-[#080808] border border-white/5 rounded-2xl py-3.5 pl-10 pr-4 text-white text-xs w-full focus:outline-none focus:border-[#CCFF00] transition-colors"
                         />
                       </div>
@@ -343,7 +367,7 @@ export default function ContactForm() {
                               <ChevronRight className="w-3 h-3 stroke-[3]" />
                             </div>
                             <span className="font-sans text-xs text-neutral-300">
-                              Oussama will reach out via email or phone to lock down your 1-on-1 strategy call arrangement.
+                              Oussama will reach out via email, phone, or WhatsApp to lock down your 1-on-1 strategy call arrangement.
                             </span>
                           </li>
                           <li className="flex items-start space-x-2.5">

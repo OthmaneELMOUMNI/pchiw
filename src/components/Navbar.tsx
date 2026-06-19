@@ -4,7 +4,9 @@
  */
 
 import React, { useState, useEffect } from "react";
-import { Menu, X, Flame } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import { WHATSAPP_URL } from "../contact";
+import WhatsAppIcon from "./WhatsAppIcon";
 
 interface NavbarProps {
   onScrollTo: (sectionId: string) => void;
@@ -102,6 +104,15 @@ export default function Navbar({ onScrollTo }: NavbarProps) {
             >
               Contact
             </button>
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Contact Oussama on WhatsApp"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#25D366]/30 bg-[#25D366]/10 text-[#25D366] transition-all duration-300 hover:bg-[#25D366] hover:text-black"
+            >
+              <WhatsAppIcon className="h-4 w-4" />
+            </a>
           </div>
 
           {/* Mobile hamburger menu trigger */}
@@ -141,13 +152,24 @@ export default function Navbar({ onScrollTo }: NavbarProps) {
             </button>
           ))}
           <div className="pt-2 px-4">
-            <button
-              id="nav-mobile-cta"
-              onClick={() => handleLinkClick("contact")}
-              className="w-full bg-[#CCFF00] text-black hover:bg-[#b0dc00] font-sans font-extrabold text-sm tracking-wider uppercase py-3 rounded shadow-[0_0_20px_rgba(204,255,0,0.25)] transition-all duration-300"
-            >
-              Book Consultation
-            </button>
+            <div className="grid grid-cols-1 gap-3">
+              <button
+                id="nav-mobile-cta"
+                onClick={() => handleLinkClick("contact")}
+                className="w-full bg-[#CCFF00] text-black hover:bg-[#b0dc00] font-sans font-extrabold text-sm tracking-wider uppercase py-3 rounded shadow-[0_0_20px_rgba(204,255,0,0.25)] transition-all duration-300"
+              >
+                Book Consultation
+              </button>
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex w-full items-center justify-center gap-2 rounded border border-[#25D366]/25 bg-[#25D366]/10 py-3 font-sans text-sm font-extrabold uppercase tracking-wider text-[#25D366] transition-all duration-300 hover:bg-[#25D366] hover:text-black"
+              >
+                <WhatsAppIcon className="h-4 w-4" />
+                <span>WhatsApp</span>
+              </a>
+            </div>
           </div>
         </div>
       </div>
