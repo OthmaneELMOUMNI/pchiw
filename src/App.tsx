@@ -11,6 +11,7 @@ import Pricing from "./components/Pricing";
 import Testimonials from "./components/Testimonials";
 import ContactForm from "./components/ContactForm";
 import Footer from "./components/Footer";
+import FloatingWhatsApp from "./components/FloatingWhatsApp";
 
 export default function App() {
   /**
@@ -47,6 +48,8 @@ export default function App() {
 
       {/* Structured Footer coordinates list */}
       <Footer onScrollTo={handleScrollToSection} />
+
+      <FloatingWhatsApp />
     </div>
   );
 }

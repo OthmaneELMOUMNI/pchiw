@@ -4,7 +4,9 @@
  */
 
 import React from "react";
-import { Flame, Mail, MapPin, Shield, HelpCircle, Instagram, Youtube, Compass, ArrowUp, Phone } from "lucide-react";
+import { Flame, Mail, MapPin, Shield, Instagram, Youtube, Compass, ArrowUp, Phone } from "lucide-react";
+import { CONTACT_PHONE_DISPLAY, CONTACT_PHONE_TEL, WHATSAPP_URL } from "../contact";
+import WhatsAppIcon from "./WhatsAppIcon";
 
 interface FooterProps {
   onScrollTo: (sectionId: string) => void;
@@ -82,6 +84,15 @@ export default function Footer({ onScrollTo }: FooterProps) {
                 <Youtube className="w-4 h-4" />
               </a>
               <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Contact Oussama on WhatsApp"
+                className="bg-neutral-900 hover:bg-[#25D366] hover:text-black border border-white/5 p-2.5 rounded-full transition-all duration-300 text-white"
+              >
+                <WhatsAppIcon className="w-4 h-4" />
+              </a>
+              <a
                 href="#contact"
                 onClick={(e) => {
                   e.preventDefault();
@@ -146,11 +157,22 @@ export default function Footer({ onScrollTo }: FooterProps) {
                   Elite Fitness, Morocco
                 </span>
               </li>
-              <li className="flex items-center space-x-2 text-neutral-450">
+              <li className="flex items-center space-x-2 text-neutral-450 hover:text-white transition-colors">
                 <Phone className="w-3.5 h-3.5 text-[#CCFF00] flex-shrink-0" />
-                <span className="font-sans text-[11px] leading-tight font-medium">
-                  +44 7700 900077
-                </span>
+                <a href={`tel:${CONTACT_PHONE_TEL}`} className="font-sans text-[11px] leading-tight font-medium">
+                  {CONTACT_PHONE_DISPLAY}
+                </a>
+              </li>
+              <li className="flex items-center space-x-2 text-neutral-450 hover:text-white transition-colors">
+                <WhatsAppIcon className="w-3.5 h-3.5 text-[#25D366] flex-shrink-0" />
+                <a
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="font-sans text-[11px] leading-tight font-medium"
+                >
+                  WhatsApp Direct
+                </a>
               </li>
             </ul>
           </div>
@@ -170,7 +192,7 @@ export default function Footer({ onScrollTo }: FooterProps) {
               <Shield className="w-3 h-3 text-[#CCFF00]" />
               <span>Terms & Private Policy</span>
             </div>
-            <span>•</span>
+            <span>&bull;</span>
             <button
               onClick={() => onScrollTo("home")}
               className="flex items-center space-x-1 text-neutral-500 hover:text-[#CCFF00] transition-colors cursor-pointer font-bold"

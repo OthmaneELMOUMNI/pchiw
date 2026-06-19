@@ -8,6 +8,8 @@ import { motion } from "motion/react";
 import { ArrowRight, Trophy, Dumbbell } from "lucide-react";
 import { TRAINER_STATS } from "../data";
 import trainerPortraitImage from "../assets/images/pchiw_home_portrait.png";
+import { WHATSAPP_URL } from "../contact";
+import WhatsAppIcon from "./WhatsAppIcon";
 
 interface HeroProps {
   onScrollTo: (sectionId: string) => void;
@@ -46,6 +48,17 @@ export default function Hero({ onScrollTo }: HeroProps) {
         >
           <span>Book a Free Consultation</span>
         </button>
+
+        <a
+          href={WHATSAPP_URL}
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Contact Oussama on WhatsApp"
+          className="sm:col-span-2 lg:col-span-1 flex min-h-12 items-center justify-center space-x-2 bg-[#128C7E] hover:bg-[#0f766b] text-white border border-white/10 font-sans font-extrabold text-xs tracking-wider uppercase px-6 sm:px-8 py-4 rounded-full transition-all duration-300 shadow-[0_0_28px_rgba(18,140,126,0.2)] hover:shadow-[0_0_34px_rgba(18,140,126,0.35)] whitespace-nowrap"
+        >
+          <WhatsAppIcon className="w-4 h-4" />
+          <span>WhatsApp</span>
+        </a>
       </motion.div>
 
       {/* Stats section */}
