@@ -49,8 +49,6 @@ export interface Testimonial {
   skillsUnlocked: string[];
   duration: string;
   imageSeed: string;
-  avatarUrl?: string;
-  transformationUrl?: string;
 }
 
 export interface OnboardingStep {

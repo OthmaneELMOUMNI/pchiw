@@ -5,7 +5,7 @@
 
 import React from "react";
 import { motion } from "motion/react";
-import { ArrowRight, Trophy, Shield, Dumbbell, Sparkles } from "lucide-react";
+import { ArrowRight, Trophy, Dumbbell } from "lucide-react";
 import { TRAINER_STATS } from "../data";
 
 interface HeroProps {
@@ -13,10 +13,65 @@ interface HeroProps {
 }
 
 export default function Hero({ onScrollTo }: HeroProps) {
+  const renderActionPanel = () => (
+    <>
+      <motion.p
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+        className="font-sans text-neutral-400 text-sm sm:text-base lg:text-lg max-w-2xl leading-relaxed"
+      >
+        Professional Calisthenics & Boxing coaching tailored to your goals. Get custom training and nutrition plans built for real results. Defy limits with the elite Oussama Pchiw.
+      </motion.p>
+
+      {/* CTA action group */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.3 }}
+        className="grid grid-cols-1 sm:grid-cols-2 lg:flex w-full lg:w-auto gap-3 sm:gap-4"
+      >
+        <button
+          onClick={() => onScrollTo("pricing")}
+          className="group flex min-h-12 items-center justify-center space-x-2 bg-[#CCFF00] hover:bg-[#b0df00] text-black font-sans font-extrabold text-xs tracking-wider uppercase px-6 sm:px-8 py-4 rounded-full transition-all duration-300 shadow-[0_0_30px_rgba(204,255,0,0.2)] hover:shadow-[0_0_35px_rgba(204,255,0,0.4)] whitespace-nowrap"
+        >
+          <span>View Pricing</span>
+          <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+        </button>
+
+        <button
+          onClick={() => onScrollTo("contact")}
+          className="flex min-h-12 items-center justify-center space-x-2 bg-neutral-950 hover:bg-[#111111] text-white border border-white/10 hover:border-white/20 font-sans font-bold text-xs tracking-wider uppercase px-6 sm:px-8 py-4 rounded-full transition-all duration-300 whitespace-nowrap"
+        >
+          <span>Book a Free Consultation</span>
+        </button>
+      </motion.div>
+
+      {/* Stats section */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 0.5 }}
+        className="grid grid-cols-2 sm:grid-cols-4 gap-0 bg-[#111111]/90 border border-white/5 rounded-3xl w-full max-w-2xl backdrop-blur-sm shadow-2xl overflow-hidden"
+      >
+        {TRAINER_STATS.map((stat) => (
+          <div key={stat.id} className="text-center group border-r border-b border-white/5 even:border-r-0 sm:even:border-r sm:border-b-0 last:border-r-0 px-3 py-4 sm:px-4 sm:py-5">
+            <div className="font-sans font-black text-2xl sm:text-3xl text-[#CCFF00] tracking-tight group-hover:scale-105 transition-transform duration-300">
+              {stat.value}
+            </div>
+            <div className="font-sans text-[9px] sm:text-[10px] tracking-wider uppercase text-neutral-400 font-bold mt-1 leading-tight">
+              {stat.label}
+            </div>
+          </div>
+        ))}
+      </motion.div>
+    </>
+  );
+
   return (
     <section
       id="home"
-      className="relative min-h-screen pt-24 pb-16 flex items-center justify-center bg-[#080808] overflow-hidden"
+      className="relative min-h-screen pt-24 pb-12 sm:pb-16 flex items-center justify-center bg-[#080808] overflow-hidden"
     >
       {/* Decorative Background Elements */}
       <div className="absolute top-1/4 right-0 w-[400px] h-[400px] bg-[#CCFF00]/5 rounded-full blur-[100px] pointer-events-none" />
@@ -26,9 +81,9 @@ export default function Hero({ onScrollTo }: HeroProps) {
       <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.01)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.01)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center">
           {/* Typographic Hero Callout (Left Column - 7/12) */}
-          <div className="lg:col-span-7 flex flex-col items-start space-y-6 text-left">
+          <div className="order-1 lg:col-span-7 flex flex-col items-start space-y-5 lg:space-y-6 text-left">
             <motion.div
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -57,63 +112,13 @@ export default function Hero({ onScrollTo }: HeroProps) {
               </span>
             </motion.h1>
 
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              id="hero-description"
-              className="font-sans text-neutral-400 text-base sm:text-lg max-w-2xl leading-relaxed"
-            >
-              Professional Calisthenics & Boxing coaching tailored to your goals. Get custom training and nutrition plans built for real results. Defy limits with the elite Oussama Pchiw.
-            </motion.p>
-
-            {/* CTA action group */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              id="hero-ctas"
-              className="flex flex-col sm:flex-row w-full sm:w-auto gap-4 pt-4"
-            >
-              <button
-                onClick={() => onScrollTo("pricing")}
-                className="group flex items-center justify-center space-x-2 bg-[#CCFF00] hover:bg-[#b0df00] text-black font-sans font-extrabold text-xs tracking-wider uppercase px-8 py-4 rounded-full transition-all duration-300 shadow-[0_0_30px_rgba(204,255,0,0.2)] hover:shadow-[0_0_35px_rgba(204,255,0,0.4)]"
-              >
-                <span>View Pricing</span>
-                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-              </button>
-
-              <button
-                onClick={() => onScrollTo("contact")}
-                className="flex items-center justify-center space-x-2 bg-neutral-950 hover:bg-[#111111] text-white border border-white/10 hover:border-white/20 font-sans font-bold text-xs tracking-wider uppercase px-8 py-4 rounded-full transition-all duration-300"
-              >
-                <span>Book a Free Consultation</span>
-              </button>
-            </motion.div>
-
-            {/* Stats section */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1, delay: 0.5 }}
-              id="hero-stats-panel"
-              className="grid grid-cols-2 sm:grid-cols-4 gap-4 px-4 py-6 bg-[#111111] border border-white/5 rounded-3xl w-full max-w-2xl mt-8 backdrop-blur-sm shadow-2xl"
-            >
-              {TRAINER_STATS.map((stat, idx) => (
-                <div key={stat.id} className="text-center group border-r border-white/5 last:border-r-0">
-                  <div className="font-sans font-black text-2xl sm:text-3xl text-[#CCFF00] tracking-tight group-hover:scale-105 transition-transform duration-300">
-                    {stat.value}
-                  </div>
-                  <div className="font-sans text-[10px] tracking-wider uppercase text-neutral-400 font-bold mt-1">
-                    {stat.label}
-                  </div>
-                </div>
-              ))}
-            </motion.div>
+            <div className="hidden lg:flex flex-col items-start gap-6 pt-1 w-full">
+              {renderActionPanel()}
+            </div>
           </div>
 
           {/* Portrait Graphic Display (Right Column - 5/12) */}
-          <div className="lg:col-span-5 flex justify-center lg:justify-end relative">
+          <div className="order-2 lg:col-span-5 flex justify-center lg:justify-end relative">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -161,6 +166,10 @@ export default function Hero({ onScrollTo }: HeroProps) {
                 </div>
               </div>
             </motion.div>
+          </div>
+
+          <div className="order-3 lg:hidden flex flex-col gap-5 bg-[#0d0d0d]/80 border border-white/5 rounded-3xl p-4 sm:p-5 shadow-2xl backdrop-blur-sm">
+            {renderActionPanel()}
           </div>
         </div>
       </div>

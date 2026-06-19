@@ -5,7 +5,7 @@
 
 import React from "react";
 import { motion } from "motion/react";
-import { Star, Award, TrendingDown, Clock, Activity, Quote } from "lucide-react";
+import { Star, Award, Clock, Quote } from "lucide-react";
 import { TESTIMONIALS } from "../data";
 
 export default function Testimonials() {
@@ -31,17 +31,17 @@ export default function Testimonials() {
           </h2>
           <div className="w-16 h-1 bg-[#CCFF00] mt-4 mb-5 rounded-full" />
           <p className="font-sans text-neutral-400 text-sm sm:text-base leading-relaxed">
-            Moroccan client-style progress snapshots showing the kind of body recomposition Oussama's strict bodyweight and boxing regimens are built to produce.
+            Real training outcomes measured through body composition, skill acquisition, endurance, and consistent coach-led execution.
           </p>
         </div>
 
         {/* Testimonials Grid */}
-        <div id="testimonials-grid" className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch max-w-6xl mx-auto">
+        <div id="testimonials-grid" className="grid grid-cols-1 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-8 items-stretch max-w-6xl mx-auto">
           {TESTIMONIALS.map((testimonial, idx) => (
             <motion.div
               key={testimonial.id}
               id={`testimonial-card-${testimonial.id}`}
-              className="bg-[#111111]/80 border border-white/5 rounded-3xl p-6 sm:p-8 flex flex-col justify-between relative shadow-2xl hover:border-[#CCFF00]/25 transition-all duration-300 backdrop-blur-sm"
+              className="bg-[#111111]/80 border border-white/5 rounded-3xl p-5 sm:p-6 lg:p-7 flex flex-col justify-between relative shadow-2xl hover:border-[#CCFF00]/25 transition-all duration-300 backdrop-blur-sm min-h-full"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
@@ -71,31 +71,15 @@ export default function Testimonials() {
                   "{testimonial.quote}"
                 </p>
 
-                {/* Transformation Image Showcasing physical results */}
-                {testimonial.transformationUrl && (
-                  <div className="relative w-full h-44 rounded-2xl overflow-hidden mb-6 border border-white/5 bg-black flex items-center justify-center group/img">
-                    <img
-                      src={testimonial.transformationUrl}
-                      alt={`${testimonial.name} - Physical Evolution`}
-                      className="w-full h-full object-cover brightness-90 group-hover/img:scale-105 group-hover/img:brightness-100 transition-all duration-500"
-                      referrerPolicy="no-referrer"
-                    />
-                    {/* Visual Overlay badges like "Active transformation" */}
-                    <div className="absolute top-3 left-3 bg-[#CCFF00] text-black font-mono font-black text-[8px] uppercase tracking-widest px-2 py-0.5 rounded shadow">
-                      OUSSAMA COACHED
-                    </div>
-                  </div>
-                )}
-
                 {/* Before vs After stats tracker table */}
-                <div className="bg-black/60 border border-white/5 rounded-2xl p-4.5 mb-6 space-y-2.5">
-                  <div className="flex items-center justify-between text-[11px] border-b border-white/5 pb-1.5">
-                    <span className="font-mono text-neutral-500 uppercase font-black tracking-wider">Before Setup:</span>
-                    <span className="font-sans text-neutral-300 font-semibold">{testimonial.beforeStats}</span>
+                <div className="bg-black/60 border border-white/5 rounded-2xl p-4 mb-6 space-y-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-[auto,1fr] gap-1 sm:gap-3 text-[11px] border-b border-white/5 pb-2">
+                    <span className="font-mono text-neutral-500 uppercase font-black tracking-wider whitespace-nowrap">Before Setup:</span>
+                    <span className="font-sans text-neutral-300 font-semibold sm:text-right leading-snug">{testimonial.beforeStats}</span>
                   </div>
-                  <div className="flex items-center justify-between text-[11px] font-bold">
-                    <span className="font-mono text-[#CCFF00] uppercase tracking-wider">Active State:</span>
-                    <span className="font-sans text-[#CCFF00] font-black">{testimonial.afterStats}</span>
+                  <div className="grid grid-cols-1 sm:grid-cols-[auto,1fr] gap-1 sm:gap-3 text-[11px] font-bold">
+                    <span className="font-mono text-[#CCFF00] uppercase tracking-wider whitespace-nowrap">Active State:</span>
+                    <span className="font-sans text-[#CCFF00] font-black sm:text-right leading-snug">{testimonial.afterStats}</span>
                   </div>
                 </div>
 
@@ -118,23 +102,11 @@ export default function Testimonials() {
               </div>
 
               {/* Bottom Client Bio footer */}
-              <div className="flex items-center justify-between border-t border-white/5 pt-5 mt-auto text-left">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-t border-white/5 pt-5 mt-auto text-left">
                 <div className="flex items-center space-x-3">
-                  {/* Styled Avatar */}
-                  {testimonial.avatarUrl ? (
-                    <div className="w-10 h-10 rounded-full overflow-hidden border border-white/10 bg-neutral-900 shadow">
-                      <img
-                        src={testimonial.avatarUrl}
-                        alt={testimonial.name}
-                        className="w-full h-full object-cover object-top"
-                        referrerPolicy="no-referrer"
-                      />
-                    </div>
-                  ) : (
-                    <div className="w-10 h-10 rounded-full bg-neutral-900 border border-white/5 flex items-center justify-center font-mono font-black text-xs text-[#CCFF00]">
-                      {testimonial.name.split(" ").map(n => n[0]).join("")}
-                    </div>
-                  )}
+                  <div className="w-10 h-10 shrink-0 rounded-full bg-neutral-900 border border-white/5 flex items-center justify-center font-mono font-black text-xs text-[#CCFF00]">
+                    {testimonial.name.split(" ").map(n => n[0]).join("")}
+                  </div>
                   <div>
                     <h4 className="font-sans font-black text-sm text-white tracking-wide uppercase">
                       {testimonial.name}
@@ -146,7 +118,7 @@ export default function Testimonials() {
                 </div>
 
                 {/* Duration indicator */}
-                <div className="flex flex-col items-end">
+                <div className="flex flex-col items-start sm:items-end">
                   <div className="flex items-center space-x-1 text-neutral-400">
                     <Clock className="w-3.5 h-3.5 text-neutral-500" />
                     <span className="font-mono text-[10px] font-extrabold text-neutral-300">
