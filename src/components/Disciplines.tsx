@@ -5,7 +5,7 @@
 
 import React, { useState } from "react";
 import { motion } from "motion/react";
-import { Check, Target, Flame, Sparkles, MoveRight, HelpCircle } from "lucide-react";
+import { Check, ChevronDown, Target, Flame, Sparkles, MoveRight } from "lucide-react";
 import { DISCIPLINES } from "../data";
 
 interface DisciplinesProps {
@@ -14,6 +14,14 @@ interface DisciplinesProps {
 
 export default function Disciplines({ onScrollTo }: DisciplinesProps) {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
+  const [expandedMobileCards, setExpandedMobileCards] = useState<Record<string, boolean>>({});
+
+  const toggleMobileCard = (disciplineId: string) => {
+    setExpandedMobileCards((current) => ({
+      ...current,
+      [disciplineId]: !current[disciplineId],
+    }));
+  };
 
   return (
     <section id="disciplines" className="relative py-24 sm:py-32 bg-[#080808] overflow-hidden">
@@ -44,7 +52,10 @@ export default function Disciplines({ onScrollTo }: DisciplinesProps) {
         {/* 2-Column Grid of Disciplines */}
         <div id="disciplines-grid" className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
           {DISCIPLINES.map((discipline, index) => {
-            const isCalisthenics = discipline.id.includes("calisthenics");
+            const isExpanded = Boolean(expandedMobileCards[discipline.id]);
+            const visibleSkills = isExpanded ? discipline.skills : discipline.skills.slice(0, 3);
+            const visibleBenefits = isExpanded ? discipline.benefits : discipline.benefits.slice(0, 2);
+            const hiddenCount = (discipline.skills.length - visibleSkills.length) + (discipline.benefits.length - visibleBenefits.length);
             return (
               <motion.div
                 key={discipline.id}
@@ -102,10 +113,20 @@ export default function Disciplines({ onScrollTo }: DisciplinesProps) {
                           Techniques & Skills
                         </span>
                       </div>
-                      <ul className="space-y-1.5 flex flex-col">
+                      <ul className="space-y-1.5 flex flex-col md:hidden">
+                        {visibleSkills.map((skill, k) => (
+                          <li key={k} className="flex items-start space-x-2">
+                            <span className="text-[#CCFF00] text-xs font-mono mt-0.5">&bull;</span>
+                            <span className="font-mono text-[11px] text-neutral-300 leading-tight">
+                              {skill}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                      <ul className="space-y-1.5 hidden md:flex flex-col">
                         {discipline.skills.map((skill, k) => (
                           <li key={k} className="flex items-start space-x-2">
-                            <span className="text-[#CCFF00] text-xs font-mono mt-0.5">•</span>
+                            <span className="text-[#CCFF00] text-xs font-mono mt-0.5">&bull;</span>
                             <span className="font-mono text-[11px] text-neutral-300 leading-tight">
                               {skill}
                             </span>
@@ -122,7 +143,19 @@ export default function Disciplines({ onScrollTo }: DisciplinesProps) {
                           Pillar Benefits
                         </span>
                       </div>
-                      <ul className="space-y-2 flex flex-col">
+                      <ul className="space-y-2 flex flex-col md:hidden">
+                        {visibleBenefits.map((benefit, k) => (
+                          <li key={k} className="flex items-start space-x-2">
+                            <div className="bg-[#CCFF00]/10 text-[#CCFF00] p-0.5 rounded flex-shrink-0 mt-0.5">
+                              <Check className="w-3 h-3" />
+                            </div>
+                            <span className="font-sans text-xs text-neutral-400 font-medium leading-tight">
+                              {benefit}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                      <ul className="space-y-2 hidden md:flex flex-col">
                         {discipline.benefits.map((benefit, k) => (
                           <li key={k} className="flex items-start space-x-2">
                             <div className="bg-[#CCFF00]/10 text-[#CCFF00] p-0.5 rounded flex-shrink-0 mt-0.5">
@@ -136,6 +169,18 @@ export default function Disciplines({ onScrollTo }: DisciplinesProps) {
                       </ul>
                     </div>
                   </div>
+
+                  {hiddenCount > 0 && (
+                    <button
+                      type="button"
+                      onClick={() => toggleMobileCard(discipline.id)}
+                      className="md:hidden -mt-2 inline-flex w-full items-center justify-center gap-2 rounded-2xl border border-[#CCFF00]/20 bg-[#CCFF00]/5 px-4 py-3 font-sans text-[11px] font-extrabold uppercase tracking-wider text-[#CCFF00] transition-colors hover:bg-[#CCFF00]/10"
+                      aria-expanded={isExpanded}
+                    >
+                      <span>{isExpanded ? "Show Less" : `See More (${hiddenCount})`}</span>
+                      <ChevronDown className={`h-4 w-4 transition-transform duration-300 ${isExpanded ? "rotate-180" : ""}`} />
+                    </button>
+                  )}
 
                   {/* Program Redirect Arrow link */}
                   <div className="pt-6 border-t border-white/5 flex items-center justify-between">

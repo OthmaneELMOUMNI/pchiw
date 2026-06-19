@@ -7,7 +7,7 @@ import { Discipline, PricingPlan, Testimonial, TrainerStat, OnboardingStep } fro
 
 export const TRAINER_STATS: TrainerStat[] = [
   { id: "stat-1", value: "8+", label: "Years Experience" },
-  { id: "stat-2", value: "500+", label: "Transformations" },
+  { id: "stat-2", value: "50+", label: "Transformations" },
   { id: "stat-3", value: "100%", label: "Custom Plans" },
   { id: "stat-4", value: "24/7", label: "Elite Support" }
 ];
@@ -163,8 +163,7 @@ export const TESTIMONIALS: Testimonial[] = [
     quote: "Working with Oussama completely changed my relationship with fitness. I always thought you needed weights to be strong. Now, I control my body with absolute precision, and my punching power has doubled!",
     skillsUnlocked: ["Human Flag", "Clapping Pull-up", "Ring Muscle-up"],
     duration: "16 Weeks",
-    imageSeed: "karim",
-    transformationUrl: "/src/assets/images/transformation_karim.png"
+    imageSeed: "karim"
   },
   {
     id: "testimonial-2",
@@ -176,8 +175,7 @@ export const TESTIMONIALS: Testimonial[] = [
     quote: "The combination of Calisthenics skill progressions and intense Boxing interval conditioning is unmatched. I deleted fat, corrected my desk posture, and finally unlocked a strict gymnastics-ring muscle-up.",
     skillsUnlocked: ["Handstand Press", "Ring Muscle-up", "3-Min Bag Blast"],
     duration: "12 Weeks",
-    imageSeed: "yassine",
-    transformationUrl: "/src/assets/images/transformation_yassine.png"
+    imageSeed: "yassine"
   },
   {
     id: "testimonial-3",
@@ -189,8 +187,7 @@ export const TESTIMONIALS: Testimonial[] = [
     quote: "Oussama doesn't run a generic fitness site. He takes biomechanics seriously. His custom menus kept me full, and his feedback on coach video audits corrected my slipping and shoulder loading immediately.",
     skillsUnlocked: ["Strict Chest-to-Bar", "3-Punch KO Combo", "L-Sit Hold"],
     duration: "8 Weeks",
-    imageSeed: "sofiane",
-    transformationUrl: "/src/assets/images/transformation_sofiane.png"
+    imageSeed: "sofiane"
   }
 ];
 
