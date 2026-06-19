@@ -7,6 +7,7 @@ import React from "react";
 import { motion } from "motion/react";
 import { ArrowRight, Trophy, Dumbbell } from "lucide-react";
 import { TRAINER_STATS } from "../data";
+import trainerPortraitImage from "../assets/images/pchiw_home_portrait.png";
 
 interface HeroProps {
   onScrollTo: (sectionId: string) => void;
@@ -137,7 +138,7 @@ export default function Hero({ onScrollTo }: HeroProps) {
               {/* Main Image */}
               <div id="trainer-main-image-container" className="relative w-full h-full overflow-hidden rounded-3xl border border-white/5 shadow-2xl group">
                 <img
-                  src="/src/assets/images/pchiw_home_portrait.png"
+                  src={trainerPortraitImage}
                   alt="OUSSAMA PCHIW - Personal Trainer Profile"
                   className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
                   referrerPolicy="no-referrer"

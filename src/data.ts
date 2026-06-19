@@ -4,6 +4,8 @@
  */
 
 import { Discipline, PricingPlan, Testimonial, TrainerStat, OnboardingStep } from "./types";
+import boxingDisciplineImage from "./assets/images/boxing_discipline_1781785373233.jpg";
+import calisthenicsDisciplineImage from "./assets/images/calisthenics_discipline_1781785354653.jpg";
 
 export const TRAINER_STATS: TrainerStat[] = [
   { id: "stat-1", value: "8+", label: "Years Experience" },
@@ -18,7 +20,7 @@ export const DISCIPLINES: Discipline[] = [
     title: "Calisthenics & Street Workout",
     subtitle: "Master Your Bodyweight",
     description: "Defy gravity, build dense functional muscle, and acquire elite skills. Learn to manipulate your body in space using progressive gymnastics, ring training, and floor work. No gym required—just pure raw mastery of form.",
-    image: "/src/assets/images/calisthenics_discipline_1781785354653.jpg",
+    image: calisthenicsDisciplineImage,
     skills: [
       "Handstands & Press Variations",
       "Strict Gym Ring Muscle-ups",
@@ -39,7 +41,7 @@ export const DISCIPLINES: Discipline[] = [
     title: "Boxing & Conditioning",
     subtitle: "Unleash Explosive Power",
     description: "Sharpen your hands, cultivate lightning fast footwork, and blow past physical plateaus. Blend authentic striking fundamentals with high-intensity fight cardio that builds a warrior's mindset and unshakeable confidence.",
-    image: "/src/assets/images/boxing_discipline_1781785373233.jpg",
+    image: boxingDisciplineImage,
     skills: [
       "Stance, Guard, & Slip Mechanics",
       "Devastating Combo Striking",
